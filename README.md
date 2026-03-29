@@ -203,7 +203,7 @@ NEXT_PUBLIC_QUESTION_NOTE=
 
 ```bash
 git clone <your-repository-url>
-cd Ai-Interview-Mocker
+cd PrepWise
 ```
 
 2. Install dependencies:
