@@ -84,18 +84,18 @@ const Feedback = ({ params }) => {
   }, [feedbackList]);
 
   return (
-    <div className="p-10">
+    <div className="py-8 sm:py-10">
       {feedbackList?.length == 0 ? (
-        <h2 className="font-bold text-xl text-gray-500 my-5">
+        <h2 className="my-5 text-xl font-bold text-gray-500">
           No Interview feedback Record Found
         </h2>
       ) : (
         <>
-          <h2 className="text-3xl font-bold text-green-500">Congratulations</h2>
-          <h2 className="font-bold text-2xl">
+          <h2 className="text-2xl font-bold text-green-500 sm:text-3xl">Congratulations</h2>
+          <h2 className="text-2xl font-bold">
             Here is your interview feedback
           </h2>
-          <h2 className="text-primary text-lg my-3">
+          <h2 className="my-3 text-base text-primary sm:text-lg">
             Your overall interview rating{" "}
             <strong
               className={`${
@@ -103,34 +103,35 @@ const Feedback = ({ params }) => {
               }`}
             >
               {Number(overallRating) === 1.0 ? 0 : overallRating}
-              <span className="text-black">/10</span>
+              <span className="text-black dark:text-white">/10</span>
             </strong>
           </h2>
-          <h2 className="text-sm text-gray-500">
+          <h2 className="text-sm leading-6 text-gray-500">
             Find below interview question with correct answer, Your answer and
             feedback for improvement
           </h2>
           {feedbackList &&
             feedbackList.map((item, index) => (
               <Collapsible key={index} className="mt-7">
-                <CollapsibleTrigger className="p-2 bg-secondary rounded-lg my-2 text-left flex justify-between gap-7 w-full">
-                  {item.question} <ChevronDown className="h-5 w-5" />{" "}
+                <CollapsibleTrigger className="my-2 flex w-full items-start justify-between gap-4 rounded-xl bg-secondary p-3 text-left text-sm sm:text-base">
+                  <span className="pr-2">{item.question}</span>
+                  <ChevronDown className="h-5 w-5 shrink-0" />
                 </CollapsibleTrigger>
                 <CollapsibleContent>
                   <div className="flex flex-col gap-2">
-                    <h2 className="text-red-500 p-2 border rounded-lg">
+                    <h2 className="rounded-lg border p-3 text-red-500">
                       <strong>Rating: </strong>
                       {item.rating}
                     </h2>
-                    <h2 className="p-2 border rounded-lg bg-red-50 text-sm text-red-900">
+                    <h2 className="rounded-lg border bg-red-50 p-3 text-sm text-red-900">
                       <strong>Your Answer: </strong>
                       {item.userAns}
                       <Volume2
-                        className="cursor-pointer"
+                        className="mt-2 cursor-pointer"
                         onClick={() => textToSpeech(item.userAns)}
                       />
                     </h2>
-                    <h2 className="p-2 border rounded-lg bg-green-50 text-sm text-green-900">
+                    <h2 className="rounded-lg border bg-green-50 p-3 text-sm text-green-900">
                       <strong>Correct Answer: </strong>
                       {item.correctAns}
                     </h2>
@@ -138,7 +139,7 @@ const Feedback = ({ params }) => {
                       className="cursor-pointer"
                       onClick={() => textToSpeech(item.correctAns)}
                     />
-                    <h2 className="p-2 border rounded-lg bg-blue-50 text-sm text-primary-900">
+                    <h2 className="rounded-lg border bg-blue-50 p-3 text-sm text-slate-900">
                       <strong>Feedback: </strong>
                       {item.feedback}
                     </h2>
@@ -153,7 +154,7 @@ const Feedback = ({ params }) => {
         </>
       )}
 
-      <Button onClick={() => router.replace("/dashboard")}>Go Home</Button>
+      <Button className="mt-6 w-full sm:w-auto" onClick={() => router.replace("/dashboard")}>Go Home</Button>
     </div>
   );
 };

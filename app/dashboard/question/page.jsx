@@ -5,11 +5,15 @@ import QuestionList from "../_components/QuestionList";
 
 const Questions = () => {
   return (
-    <div className="p-10" >
-      <h2 className="font-bold text-2xl" >Master Your Interviews</h2>
-      <h2 className="text-gray-500" >Comprehensive Question Preparation with AI</h2>
+    <div className="app-shell py-10">
+      <div className="mb-8 max-w-2xl">
+        <h2 className="text-3xl font-semibold tracking-tight">Master Your Interviews</h2>
+        <h2 className="mt-2 text-base leading-7 text-muted-foreground">
+          Create focused question banks for company prep, technical rounds, and repeat practice.
+        </h2>
+      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 my-5" >
+      <div className="my-5 grid grid-cols-1 md:grid-cols-3">
         <AddQuestions/>
       </div>
 

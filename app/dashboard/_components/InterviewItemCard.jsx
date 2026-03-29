@@ -12,13 +12,16 @@ const InterviewItemCard = ({interview}) => {
         router.push("/dashboard/interview/"+interview?.mockId+"/feedback")
     }
   return (
-    <div className="border border-gray-500 shadow-sm rounded-lg p-3" >
-        <h2 className='font-bold text-primary' >{interview?.jobPosition}</h2>
-        <h2 className='text-sm text-gray-600' >{interview?.jobExperience} Years of experience</h2>
-        <h2 className="text-xs text-gray-400" >Created At:{interview.createdAt}</h2>
+    <div className="panel-surface rounded-[1.5rem] p-5" >
+        <div className="mb-4 inline-flex rounded-full bg-secondary px-3 py-1 text-xs font-medium text-muted-foreground">
+          Mock interview
+        </div>
+        <h2 className='text-lg font-semibold text-foreground' >{interview?.jobPosition}</h2>
+        <h2 className='mt-2 text-sm text-muted-foreground' >{interview?.jobExperience} Years of experience</h2>
+        <h2 className="mt-1 text-xs text-muted-foreground" >Created At: {interview.createdAt}</h2>
 
-        <div className='flex justify-between mt-2 gap-5 ' >
-            <Button onClick={onFeedback} size="sm"  className="w-full" >Feedback</Button>
+        <div className='mt-5 flex justify-between gap-3' >
+            <Button onClick={onFeedback} size="sm" variant="outline" className="w-full" >Feedback</Button>
             <Button onClick={onStart} size="sm"  className="w-full">Start</Button>
         </div>
     </div>

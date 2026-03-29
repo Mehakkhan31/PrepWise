@@ -1,11 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import { UserButton } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 import { ModeToggle } from "@/components/ModeToggle";
 import Link from "next/link";
-const Header = ({ logo }) => {
+const Header = () => {
   const [isUserButtonLoaded, setUserButtonLoaded] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -14,7 +13,7 @@ const Header = ({ logo }) => {
   };
 
   const SkeletonLoader = () => (
-    <div className="w-8 h-8 bg-gray-300 rounded-full animate-pulse"></div>
+    <div className="h-8 w-8 animate-pulse rounded-full bg-secondary"></div>
   );
 
   useEffect(() => {
@@ -30,56 +29,42 @@ const Header = ({ logo }) => {
   useEffect(() => {
     console.log(path);
   }, []);
+
+  const itemClass = (href) =>
+    `rounded-full px-4 py-2 text-sm font-medium transition ${
+      path === href
+        ? "bg-primary text-primary-foreground shadow-sm"
+        : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+    }`;
   return (
-    <div className=" bg-secondary shadow-sm ">
-      <div className="w-[80%] m-auto flex gap-4 items-center justify-between">
-        <Link className="hidden md:block" href="/dashboard">
-          <Image src={logo} width={80} height={80} alt="logo" />
+    <div className="border-b border-border/70 bg-background/80 backdrop-blur-xl">
+      <div className="app-shell flex items-center justify-between gap-4 py-3">
+        <Link
+          className="hidden text-xl font-semibold tracking-tight text-foreground md:block"
+          href="/dashboard"
+        >
+          PrepWise
         </Link>
-        <ul className="hidden md:flex gap-6">
+        <ul className="hidden md:flex md:items-center md:gap-2">
           <Link href="/dashboard">
-            <li
-              className={`hover:text-black hover:font-bold transition-all cursor-pointer ${
-                path == "/dashboard" && "text-black font-bold"
-              }`}
-            >
-              Dashboard
-            </li>
+            <li className={itemClass("/dashboard")}>Dashboard</li>
           </Link>
           <Link href="/dashboard/question">
-            <li
-              className={`hover:text-black hover:font-bold transition-all cursor-pointer ${
-                path == "/dashboard/question" && "text-black font-bold"
-              }`}
-            >
-              Questions
-            </li>
+            <li className={itemClass("/dashboard/question")}>Questions</li>
           </Link>
 
           <Link href="/dashboard/upgrade">
-            <li
-              className={`hover:text-black hover:font-bold transition-all cursor-pointer ${
-                path == "/dashboard/upgrade" && "text-black font-bold"
-              }`}
-            >
-              Upgrade
-            </li>
+            <li className={itemClass("/dashboard/upgrade")}>Upgrade</li>
           </Link>
 
           <Link href="/dashboard/howit">
-            <li
-              className={`hover:text-black hover:font-bold transition-all cursor-pointer ${
-                path == "/dashboard/howit" && "text-black font-bold"
-              }`}
-            >
-              How it works?
-            </li>
+            <li className={itemClass("/dashboard/howit")}>How it works?</li>
           </Link>
         </ul>
         <div className="md:hidden">
           <button
             onClick={toggleMenu}
-            className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+            className="inline-flex items-center justify-center rounded-xl border border-border bg-background p-2 text-muted-foreground hover:bg-secondary hover:text-foreground"
           >
             <span className="sr-only">Open main menu</span>
             {isOpen ? (
@@ -123,44 +108,20 @@ const Header = ({ logo }) => {
         </div>
       </div>
       {isOpen && (
-        <div className="md:hidden">
-          <div className="px-5">
-            <ul className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div className="border-t border-border/70 bg-background md:hidden">
+          <div className="app-shell py-3">
+            <ul className="space-y-2">
               <Link href="/dashboard">
-                <li
-                  className={`hover:text-black hover:font-bold transition-all cursor-pointer ${
-                    path == "/dashboard" && "text-black font-bold"
-                  }`}
-                >
-                  Dashboard
-                </li>
+                <li className={itemClass("/dashboard")}>Dashboard</li>
               </Link>
               <Link href="/dashboard/question">
-                <li
-                  className={`hover:text-black hover:font-bold transition-all cursor-pointer ${
-                    path == "/dashboard/question" && "text-black font-bold"
-                  }`}
-                >
-                  Questions
-                </li>
+                <li className={itemClass("/dashboard/question")}>Questions</li>
               </Link>
               <Link href="/dashboard/upgrade">
-                <li
-                  className={`hover:text-black hover:font-bold transition-all cursor-pointer ${
-                    path == "/dashboard/upgrade" && "text-black font-bold"
-                  }`}
-                >
-                  Upgrade
-                </li>
+                <li className={itemClass("/dashboard/upgrade")}>Upgrade</li>
               </Link>
               <Link href="/dashboard/howit">
-                <li
-                  className={`hover:text-black hover:font-bold transition-all cursor-pointer ${
-                    path == "/dashboard/howit" && "text-black font-bold"
-                  }`}
-                >
-                  How it works?
-                </li>
+                <li className={itemClass("/dashboard/howit")}>How it works?</li>
               </Link>
             </ul>
           </div>

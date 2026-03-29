@@ -31,7 +31,7 @@ const StartInterview = ({ params }) => {
 
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 my-10">
+      <div className="my-8 grid grid-cols-1 gap-6 md:my-10 md:grid-cols-2">
         {/* Questin Section */}
         <QuestionSection
           mockInterviewQuestion={mockInterviewQuestion}
@@ -45,9 +45,10 @@ const StartInterview = ({ params }) => {
           interviewData={interviewData}
         />
       </div>
-      <div className="flex gap-3 my-5 md:my-0 md:justify-end md:gap-6">
+      <div className="my-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap md:my-0 md:justify-end md:gap-4">
         {activeQuestionIndex > 0 && (
           <Button
+            className="w-full sm:w-auto"
             onClick={() => setActiveQuestionIndex(activeQuestionIndex - 1)}
           >
             Previous Question
@@ -55,6 +56,7 @@ const StartInterview = ({ params }) => {
         )}
         {activeQuestionIndex != mockInterviewQuestion?.length - 1 && (
           <Button
+            className="w-full sm:w-auto"
             onClick={() => setActiveQuestionIndex(activeQuestionIndex + 1)}
           >
             Next Question
@@ -62,9 +64,10 @@ const StartInterview = ({ params }) => {
         )}
         {activeQuestionIndex == mockInterviewQuestion?.length - 1 && (
           <Link
+            className="w-full sm:w-auto"
             href={"/dashboard/interview/" + interviewData?.mockId + "/feedback"}
           >
-            <Button>End Interview</Button>
+            <Button className="w-full sm:w-auto">End Interview</Button>
           </Link>
         )}
       </div>

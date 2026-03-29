@@ -150,11 +150,12 @@ const RecordAnswerSection = ({
 
   return (
     <div className="flex flex-col items-center justify-center overflow-hidden">
-      <div className="flex flex-col justify-center items-center rounded-lg p-5 bg-black mt-4 w-[30rem] ">
+      <div className="mt-4 flex w-full max-w-[30rem] flex-col items-center justify-center rounded-[1.5rem] bg-black p-4 sm:p-5">
         {webCamEnabled ? (
           <Webcam
             mirrored={true}
-            style={{ height: 250, width: "100%", zIndex: 10 }}
+            className="w-full rounded-xl"
+            style={{ maxHeight: 300, zIndex: 10 }}
           />
         ) : (
           <Image
@@ -162,16 +163,18 @@ const RecordAnswerSection = ({
             width={200}
             height={200}
             alt="Camera placeholder"
+            className="h-auto w-[140px] sm:w-[200px]"
           />
         )}
       </div>
-      <div className="md:flex mt-4 md:mt-8 md:gap-5">
-        <div className="my-4 md:my-0">
-          <Button onClick={() => setWebCamEnabled((prev) => !prev)}>
+      <div className="mt-4 flex w-full max-w-[30rem] flex-col gap-3 md:mt-8 md:flex-row md:gap-5">
+        <div className="md:my-0 md:flex-1">
+          <Button className="w-full" onClick={() => setWebCamEnabled((prev) => !prev)}>
             {webCamEnabled ? "Close WebCam" : "Enable WebCam"}
           </Button>
         </div>
         <Button
+          className="w-full md:flex-1"
           variant="outline"
           onClick={isRecording ? stopRecording : startRecording}
           disabled={loading}

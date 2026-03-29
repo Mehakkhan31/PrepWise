@@ -83,10 +83,22 @@ const AddNewInterview = () => {
   return (
     <div>
       <div
-        className="p-10 rounded-lg border bg-secondary hover:scale-105 hover:shadow-sm transition-all cursor-pointer hover:bg-gray-300"
+        className="panel-surface group min-h-[220px] cursor-pointer rounded-[1.75rem] p-7 transition duration-200 hover:-translate-y-1 hover:shadow-[0_20px_40px_-24px_rgba(15,23,42,0.35)]"
         onClick={() => setOpenDialog(true)}
       >
-        <h2 className=" text-lg text-center">+ Add New</h2>
+        <div className="flex h-full flex-col justify-between">
+          <div className="inline-flex w-fit rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-indigo-700 dark:bg-indigo-500/15 dark:text-indigo-300">
+            New session
+          </div>
+          <div>
+            <h2 className="text-2xl font-semibold text-foreground">
+              Create mock interview
+            </h2>
+            <p className="mt-3 max-w-sm text-sm leading-7 text-muted-foreground">
+              Generate a fresh interview tailored to the role, stack, and experience level you want to practice.
+            </p>
+          </div>
+        </div>
       </div>
       <Dialog open={openDailog}>
         <DialogContent className="max-w-2xl">
@@ -94,16 +106,16 @@ const AddNewInterview = () => {
             <DialogTitle className="text-2xl">
               Tell us more about your job interviwing
             </DialogTitle>
-            <DialogDescription>
+            <DialogDescription className="text-muted-foreground">
               <form onSubmit={onSubmit}>
                 <div className="my-3">
-                  <h2>
+                  <h2 className="text-sm leading-6 text-muted-foreground">
                     Add Details about your job position, job descritpion and
                     years of experience
                   </h2>
 
                   <div className="mt-7 my-3">
-                    <label className="text-black">Job Role/job Position</label>
+                    <label className="text-sm font-medium text-foreground">Job Role/job Position</label>
                     <Input
                       className="mt-1"
                       placeholder="Ex. Full stack Developer"
@@ -112,7 +124,7 @@ const AddNewInterview = () => {
                     />
                   </div>
                   <div className="my-5">
-                    <label className="text-black">
+                    <label className="text-sm font-medium text-foreground">
                       Job Description/ Tech stack (In Short)
                     </label>
                     <Textarea
@@ -123,7 +135,7 @@ const AddNewInterview = () => {
                     />
                   </div>
                   <div className="my-5">
-                    <label className="text-black">Years of Experience</label>
+                    <label className="text-sm font-medium text-foreground">Years of Experience</label>
                     <Input
                       className="mt-1"
                       placeholder="Ex. 5"
@@ -137,7 +149,7 @@ const AddNewInterview = () => {
                 <div className="flex gap-5 justify-end">
                   <Button
                     type="button"
-                    variant="goast"
+                    variant="ghost"
                     onClick={() => setOpenDialog(false)}
                   >
                     Cancel

@@ -1,76 +1,150 @@
-  @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  @layer base {
-    :root {
-      --background: 0 0% 100%;
-      --foreground: 0 0% 3.9%;
+@layer base {
+  :root {
+    --background: 222 33% 97%;
+    --foreground: 223 35% 14%;
 
-      --card: 0 0% 100%;
-      --card-foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 223 35% 14%;
 
-      --popover: 0 0% 100%;
-      --popover-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 223 35% 14%;
 
-      --primary: 0 0% 9%;
-      --primary-foreground: 0 0% 98%;
+    --primary: 224 71% 54%;
+    --primary-foreground: 210 40% 98%;
 
-      --secondary: 0 0% 96.1%;
-      --secondary-foreground: 0 0% 9%;
+    --secondary: 220 27% 94%;
+    --secondary-foreground: 223 35% 18%;
 
-      --muted: 0 0% 96.1%;
-      --muted-foreground: 0 0% 45.1%;
+    --muted: 220 23% 92%;
+    --muted-foreground: 220 12% 40%;
 
-      --accent: 0 0% 96.1%;
-      --accent-foreground: 0 0% 9%;
+    --accent: 214 82% 95%;
+    --accent-foreground: 223 35% 18%;
 
-      --destructive: 0 84.2% 60.2%;
-      --destructive-foreground: 0 0% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
 
-      --border: 0 0% 89.8%;
-      --input: 0 0% 89.8%;
-      --ring: 0 0% 3.9%;
+    --border: 220 20% 88%;
+    --input: 220 20% 88%;
+    --ring: 224 71% 54%;
 
-      --radius: 0.5rem;
-    }
-
-    .dark {
-      --background: 0 0% 3.9%;
-      --foreground: 0 0% 98%;
-
-      --card: 0 0% 3.9%;
-      --card-foreground: 0 0% 98%;
-
-      --popover: 0 0% 3.9%;
-      --popover-foreground: 0 0% 98%;
-
-      --primary: 0 0% 98%;
-      --primary-foreground: 0 0% 9%;
-
-      --secondary: 0 0% 14.9%;
-      --secondary-foreground: 0 0% 98%;
-
-      --muted: 0 0% 14.9%;
-      --muted-foreground: 0 0% 63.9%;
-
-      --accent: 0 0% 14.9%;
-      --accent-foreground: 0 0% 98%;
-
-      --destructive: 0 62.8% 30.6%;
-      --destructive-foreground: 0 0% 98%;
-
-      --border: 0 0% 14.9%;
-      --input: 0 0% 14.9%;
-      --ring: 0 0% 83.1%;
-    }
+    --radius: 0.9rem;
   }
 
-  @layer base {
-    * {
-      @apply border-border;
-    }
-    body {
-      @apply bg-background text-foreground;
-    }
+  .dark {
+    --background: 222 30% 8%;
+    --foreground: 220 20% 92%;
+
+    --card: 222 24% 12%;
+    --card-foreground: 220 20% 92%;
+
+    --popover: 222 24% 12%;
+    --popover-foreground: 220 20% 92%;
+
+    --primary: 217 91% 66%;
+    --primary-foreground: 222 30% 8%;
+
+    --secondary: 223 18% 18%;
+    --secondary-foreground: 220 20% 92%;
+
+    --muted: 223 17% 16%;
+    --muted-foreground: 218 14% 67%;
+
+    --accent: 223 17% 18%;
+    --accent-foreground: 220 20% 92%;
+
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 222 30% 8%;
+
+    --border: 223 16% 22%;
+    --input: 223 16% 22%;
+    --ring: 217 91% 66%;
   }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at top left, rgba(99, 102, 241, 0.08), transparent 28%),
+      radial-gradient(circle at top right, rgba(14, 165, 233, 0.07), transparent 22%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0));
+  }
+
+  .dark body {
+    background-image:
+      radial-gradient(circle at top left, rgba(99, 102, 241, 0.18), transparent 28%),
+      radial-gradient(circle at top right, rgba(14, 165, 233, 0.12), transparent 22%),
+      linear-gradient(180deg, rgba(15, 23, 42, 0.12), rgba(15, 23, 42, 0));
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-foreground;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    @apply text-muted-foreground;
+  }
+
+  ::selection {
+    background: rgba(79, 70, 229, 0.18);
+  }
+}
+
+@layer components {
+  .app-shell {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .glass-surface {
+    @apply border backdrop-blur-xl;
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: 0 20px 50px -24px rgba(15, 23, 42, 0.25);
+  }
+
+  .panel-surface {
+    @apply rounded-3xl border bg-card;
+    border-color: hsl(var(--border) / 0.7);
+    box-shadow: 0 12px 30px -18px rgba(15, 23, 42, 0.24);
+  }
+
+  .hero-orb {
+    @apply absolute rounded-full blur-3xl;
+  }
+
+  .section-title {
+    @apply text-3xl font-semibold tracking-tight sm:text-4xl;
+  }
+
+  .section-copy {
+    @apply text-base leading-7 text-muted-foreground sm:text-lg;
+  }
+
+  .dark .glass-surface {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(15, 23, 42, 0.75);
+    box-shadow: 0 20px 50px -24px rgba(2, 6, 23, 0.7);
+  }
+
+  .dark .panel-surface {
+    border-color: hsl(var(--border) / 0.8);
+  }
+}

@@ -12,11 +12,12 @@ const QuestionSection = ({ mockInterviewQuestion, activeQuestionIndex }) => {
   };
   return (
     mockInterviewQuestion && (
-      <div className=" flex flex-col justify-between p-5 border rounded-lg my-1 bg-secondary">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 ">
+      <div className="my-1 flex flex-col justify-between rounded-[1.5rem] border bg-secondary p-4 sm:p-5">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
           {mockInterviewQuestion &&
             mockInterviewQuestion.map((question, index) => (
               <h2
+                key={index}
                 className={`p-2  rounded-full text-center text-xs md:text-sm cursor-pointer md:block hidden ${
                   activeQuestionIndex == index
                     ? "bg-black text-white"
@@ -27,7 +28,7 @@ const QuestionSection = ({ mockInterviewQuestion, activeQuestionIndex }) => {
               </h2>
             ))}
         </div>
-        <h2 className="my-5 text-md md:text-lg">
+        <h2 className="my-5 text-base leading-7 md:text-lg">
           {mockInterviewQuestion[activeQuestionIndex]?.Question}
         </h2>
         <Volume2
@@ -36,12 +37,12 @@ const QuestionSection = ({ mockInterviewQuestion, activeQuestionIndex }) => {
             textToSpeech(mockInterviewQuestion[activeQuestionIndex]?.Question)
           }
         />
-        <div className="border rounded-lg p-5 bg-blue-100 mt-18 md:block hidden">
+        <div className="mt-6 rounded-[1.25rem] border bg-blue-100 p-4 sm:p-5 md:block hidden dark:border-blue-500/20 dark:bg-blue-500/10">
           <h2 className="flex gap-2 items-center text-blue-800">
             <Lightbulb />
             <strong>Note:</strong>
           </h2>
-          <h2 className="text-sm text-blue-600 my-2">
+          <h2 className="my-2 text-sm leading-6 text-blue-700 dark:text-blue-200">
             {process.env.NEXT_PUBLIC_QUESTION_NOTE}
           </h2>
         </div>

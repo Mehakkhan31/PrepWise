@@ -50,8 +50,8 @@ const Contect = () => {
   };
   return (
     <div className="container mx-auto text-center">
-      <h2 className="text-4xl font-bold text-gray-800">Get In Touch</h2>
-      <p className="mt-4 text-lg text-gray-600">
+      <h2 className="text-4xl font-semibold tracking-tight text-foreground">Get In Touch</h2>
+      <p className="mt-4 text-lg text-muted-foreground">
         Have any questions? Reach out to us and we'll get back to you as soon as
         possible.
       </p>
@@ -62,25 +62,25 @@ const Contect = () => {
             placeholder="Your Name"
             value={name}
             onChange={handleInputChange(setName)}
-            className="w-full px-4 py-3 mb-4 text-lg border border-gray-300 rounded-lg"
+            className="mb-4 w-full rounded-xl border border-border bg-background px-4 py-3 text-lg text-foreground outline-none transition focus:border-primary"
           />
           <input
             type="email"
             placeholder="Your Email"
             value={email}
             onChange={handleInputChange(setEmail)}
-            className="w-full px-4 py-3 mb-4 text-lg border border-gray-300 rounded-lg"
+            className="mb-4 w-full rounded-xl border border-border bg-background px-4 py-3 text-lg text-foreground outline-none transition focus:border-primary"
           />
           <textarea
             placeholder="Your Message"
             value={message}
             onChange={handleInputChange(setMessage)}
-            className="w-full px-4 py-3 mb-4 text-lg border border-gray-300 rounded-lg"
+            className="mb-4 w-full rounded-xl border border-border bg-background px-4 py-3 text-lg text-foreground outline-none transition focus:border-primary"
             rows="4"
           />
           <button
             type="submit"
-            className="px-6 py-3 text-lg font-semibold bg-black text-white rounded-lg shadow-lg hover:bg-gray-700"
+            className="inline-flex min-h-11 items-center justify-center rounded-xl bg-primary px-6 py-3 text-lg font-medium text-primary-foreground shadow-[0_10px_24px_-12px_rgba(79,70,229,0.55)] transition hover:bg-primary/95"
           >
             {loading ? (
               <LoaderCircle className="animate-spin" />
